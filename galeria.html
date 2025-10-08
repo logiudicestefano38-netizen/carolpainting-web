@@ -1,0 +1,163 @@
+        <!-- Código de ejemplo de Tawk.to Live Chat -->
+        <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        Tawk_API.onLoad = function(){
+            Tawk_API.addEvent('welcome', {
+                message: 'Hola y bienvenido, estamos listas para ayudarte con tu proyecto. Para comenzar, por favor selecciona el servicio principal que te interesa: Pintura, Remodelación, Construcción.'
+            });
+            Tawk_API.addEvent('faq-remodelacion', {
+                message: '¡Excelente elección! Nos especializamos en todo tipo de remodelaciones. Somos expertas en reparaciones y renovaciones de baños, cocinas, balcones y techos. Además, ofrecemos nuestros servicios para condominios, apartamentos, casas y escuelas. Para darte la mejor asistencia, por favor cuéntanos más sobre tu proyecto de remodelación. Si prefieres hablar directamente con un especialista, puedes llamarnos al +1 786-334-8969 o escribirnos a henryhernan1992@gmail.com.'
+            });
+        };
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/TU_ID_DE_WIDGET/1hxxxxxxx';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Tipografía moderna Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', Arial, sans-serif; background: #fff; color: #222; }
+        h1, h2, h3 { color: #0d1a2f; text-shadow: 2px 2px 8px #2196f3; }
+        a, .btn, .navbar-brand { color: #2196f3 !important; }
+        .btn-primary { background: #2196f3; border: none; }
+        .btn-primary:hover { background: #0d1a2f; }
+        .efecto-animado { transition: transform 0.5s, box-shadow 0.5s; }
+        .efecto-animado:hover { transform: scale(1.05) rotate(-2deg); box-shadow: 0 8px 32px #2196f3; }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería | Carol Painting</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+    <style>
+        .galeria-slider picture.active img {
+            transition: transform 0.4s cubic-bezier(.77,0,.18,1);
+        }
+        .galeria-slider picture.active.zoom img {
+            transform: scale(1.15);
+            box-shadow: 0 8px 32px rgba(255,179,71,0.18);
+            z-index: 3;
+        }
+        .galeria-slider {
+            position: relative;
+            max-width: 600px;
+            margin: 2em auto;
+            overflow: hidden;
+        }
+        .galeria-slider .imagenes {
+            display: flex;
+            transition: transform 0.7s cubic-bezier(.77,0,.18,1);
+        }
+        .galeria-slider picture {
+            min-width: 100%;
+            filter: blur(2px);
+            transition: filter 0.5s;
+        }
+        .galeria-slider picture.active {
+            filter: blur(0);
+        }
+        .galeria-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,179,71,0.8);
+            border: none;
+            font-size: 2em;
+            color: #fff;
+            padding: 0.2em 0.5em;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2;
+            transition: background 0.2s;
+        }
+        .galeria-arrow:hover {
+            background: #d35400;
+        }
+        .galeria-arrow.left { left: 10px; }
+        .galeria-arrow.right { right: 10px; }
+    </style>
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <nav class="navbar animate__animated animate__fadeInDown" data-aos="fade-down">
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="galeria.html">Galería</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="sobre.html">Sobre Nosotros</a>
+    </nav>
+    <section class="galeria">
+    <h2 class="efecto-animado">Galería</h2>
+        <div class="galeria-slider">
+            <button class="galeria-arrow left" onclick="moverGaleria(-1)">&#8592;</button>
+            <div class="imagenes">
+                <picture class="active animate__animated animate__zoomIn" data-aos="zoom-in">
+                    <span class="reveal-layer"></span>
+                    <img src="img/1DE84542-776D-4EAF-8237-A8191769233B.jpeg" alt="Trabajo 1" loading="lazy">
+                    <span class="overlay-text">Trabajo 1</span>
+                </picture>
+                <picture class="animate__animated animate__zoomIn" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="img/IMG_0187.jpeg" alt="Trabajo 2" loading="lazy">
+                    <span class="overlay-text">Trabajo 2</span>
+                </picture>
+                <picture class="animate__animated animate__zoomIn" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="img/IMG_0188.jpeg" alt="Trabajo 3" loading="lazy">
+                    <span class="overlay-text">Trabajo 3</span>
+                </picture>
+                <picture class="animate__animated animate__zoomIn" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="img/processed-7807E468-4409-453F-8AAD-E0FF12F24D43.jpeg" alt="Trabajo 4" loading="lazy">
+                    <span class="overlay-text">Trabajo 4</span>
+                </picture>
+            </div>
+            <button class="galeria-arrow right" onclick="moverGaleria(1)">&#8594;</button>
+        </div>
+    </section>
+    <footer>
+        &copy; 2025 Carol Painting
+    <footer class="animate__animated animate__fadeInUp" data-aos="fade-up" data-aos-delay="600">
+        &copy; 2025 Carol Painting
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init();
+    // Slider de galería con flechas y difuminado
+    let galeriaActual = 0;
+    const imagenes = document.querySelectorAll('.galeria-slider .imagenes picture');
+    function moverGaleria(dir) {
+        galeriaActual += dir;
+        if (galeriaActual < 0) galeriaActual = imagenes.length - 1;
+        if (galeriaActual >= imagenes.length) galeriaActual = 0;
+        imagenes.forEach((pic, i) => {
+            pic.classList.toggle('active', i === galeriaActual);
+            pic.classList.remove('zoom');
+            if (i === galeriaActual) {
+                pic.classList.add('reveal');
+                setTimeout(() => pic.classList.remove('reveal'), 700);
+            }
+        });
+        document.querySelector('.galeria-slider .imagenes').style.transform = `translateX(-${galeriaActual * 100}%)`;
+    }
+    // Efecto de zoom al tocar/click en la imagen activa
+    imagenes.forEach((pic, i) => {
+        pic.addEventListener('click', function() {
+            if (i === galeriaActual) {
+                pic.classList.toggle('zoom');
+            }
+        });
+        pic.addEventListener('touchstart', function() {
+            if (i === galeriaActual) {
+                pic.classList.toggle('zoom');
+            }
+        });
+    });
+    // Inicializar estado
+    moverGaleria(0);
+    </script>
