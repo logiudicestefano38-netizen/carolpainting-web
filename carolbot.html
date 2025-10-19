@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carol Painting Construction 🎨 | Servicios Profesionales de Pintura y Construcción</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+        header {
+            background: #1E3C57;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: 3px solid #FF6600;
+        }
+        header h1 {
+            float: left;
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+        header span {
+            color: #FF6600;
+        }
+        nav {
+            float: right;
+            padding-top: 5px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background: #FF6600;
+        }
+        #hero {
+            background: url('https://images.unsplash.com/photo-1541888946766-3d29a5477c7c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            height: 400px;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        #hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        #hero h2 {
+            margin: 0 0 10px;
+            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+        #hero p {
+            font-size: 20px;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: #FF6600;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .btn-primary:hover {
+            background: #e65c00;
+        }
+        #services {
+            padding: 50px 0;
+            text-align: center;
+        }
+        #services h3 {
+            color: #1E3C57;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+        .service-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        .service-card h4 {
+            color: #FF6600;
+            margin-top: 0;
+            font-size: 24px;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        footer {
+            background: #1E3C57;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+        #carolbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        #carolbot-toggle {
+            background: #FF6600;
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        #carolbot-toggle:hover {
+            transform: scale(1.05);
+        }
+        #carolbot-box {
+            width: 350px;
+            height: 450px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            overflow: hidden;
+        }
+        #carolbot-header {
+            background: #1E3C57;
+            color: white;
+            padding: 15px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #carolbot-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #FF6600;
+        }
+        #carolbot-header h4 {
+            margin: 0 0 0 10px;
+            flex-grow: 1;
+        }
+        #carolbot-chat {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 15px;
+            max-width: 80%;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+        .bot {
+            background: #e0e0e0;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+        .user {
+            background: #FF6600;
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+            border-bottom-right-radius: 2px;
+        }
+        #carolbot-input-area {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background: #fff;
+        }
+        #carolbot-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 5px;
+            font-size: 14px;
+        }
+        #mic-button {
+            background: #1E3C57;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        #mic-button:hover {
+            background: #152a3b;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+        @keyframes brush-move {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(5deg);
+            }
+            75% {
+                transform: rotate(-5deg);
+            }
+        }
+        .speaking {
+            animation: bounce 0.5s infinite alternate, brush-move 1s infinite;
+        }
+        @media (max-width: 768px) {
+            #hero h2 {
+                font-size: 32px;
+            }
+            #hero p {
+                font-size: 16px;
+            }
+            nav {
+                float: none;
+                text-align: center;
+                padding-top: 10px;
+            }
+            header h1 {
+                float: none;
+                text-align: center;
+            }
+            #carolbot-box {
+                width: 90vw;
+                right: 5vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Carol <span>🫶🏼</span> Painting Construction</h1>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="galeria.html">Galería</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="sobre.html">Sobre Nosotros</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div id="hero-content" class="container">
+            <h2>Transformando Espacios con Color y Calidad</h2>
+            <p>Especialistas en pintura residencial y proyectos de construcción en Miami y Florida.</p>
+            <a href="#services" class="btn-primary">Ver Nuestros Servicios</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h3>Nuestros Servicios de Excelencia</h3>
+            <div class="card-grid">
+                <div class="service-card">
+                    <h4>Pintura Residencial</h4>
+                    <p>Aplicación profesional de pintura interior y exterior. Usamos solo marcas premium para acabados duraderos y perfectos.</p>
+                    <ul>
+                        <li>Preparación de superficies</li>
+                        <li>Acabados lisos y texturizados</li>
+                        <li>Garantía de color</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h4>Remodelación Ligera</h4>
+                    <p>Servicios de construcción y reparación para preparar su propiedad. Desde drywall hasta reparaciones menores.</p>
+                    <ul>
+                        <li>Instalación y reparación de Drywall</li>
+                        <li>Reparación de techos y paredes</li>
+                        <li>Carpintería básica</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h4>Pintura Comercial</h4>
+                    <p>Mantenimiento y pintura de oficinas, locales y edificios comerciales. Trabajamos fuera de horario para no interrumpir su negocio.</p>
+                    <ul>
+                        <li>Pintura de alto tráfico</li>
+                        <li>Recubrimientos protectores</li>
+                        <li>Presupuestos por proyecto</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Carol 🫶🏼 Painting Construction © 2025. Todos los derechos reservados. | ¡Habla con CarolBot para presupuesto!</p>
+        </div>
+    </footer>
+
+    <div id="carolbot-container">
+        <button id="carolbot-toggle">💬</button>
+        <div id="carolbot-box">
+            <div id="carolbot-header">
+                <img id="carolbot-avatar" src="https://via.placeholder.com/40/FF6600/FFFFFF?text=CB" alt="CarolBot Avatar">
+                <h4>CarolBot | Asistente</h4>
+            </div>
+            <div id="carolbot-chat"></div>
+            <div id="carolbot-input-area">
+                <input type="text" id="carolbot-input" placeholder="Escribe tu pregunta...">
+                <button id="mic-button">🎤</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration constants
+        const CONFIG = {
+            phone: '+1 786-334-8969',
+            phoneDisplay: '(786) 334-8969',
+            email: 'henryhernan1992@gmail.com',
+            companyName: 'Carol 🫶🏼 Painting Construction'
+        };
+
+        const toggleButton = document.getElementById('carolbot-toggle');
+        const chatBox = document.getElementById('carolbot-box');
+        const chatArea = document.getElementById('carolbot-chat');
+        const inputField = document.getElementById('carolbot-input');
+        const micButton = document.getElementById('mic-button');
+        const avatar = document.getElementById('carolbot-avatar');
+        const synth = window.speechSynthesis;
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = SpeechRecognition ? new SpeechRecognition() : null;
+        let isRecognizing = false;
+
+        if (recognition) {
+            recognition.lang = 'es-ES';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            recognition.onstart = () => {
+                isRecognizing = true;
+            };
+
+            recognition.onend = () => {
+                isRecognizing = false;
+                micButton.textContent = '🎤';
+                micButton.style.backgroundColor = '#1E3C57';
+            };
+
+            recognition.onresult = event => {
+                const speechToText = event.results[0][0].transcript;
+                mostrarMensaje(speechToText, 'user');
+                responder(speechToText);
+            };
+
+            recognition.onerror = event => {
+                isRecognizing = false;
+                micButton.textContent = '🎤';
+                micButton.style.backgroundColor = '#1E3C57';
+                console.error('Error de reconocimiento de voz:', event.error);
+                if (event.error !== 'no-speech' && event.error !== 'aborted') {
+                    mostrarMensaje('No te pude escuchar bien. ¿Puedes escribir tu pregunta?', 'bot');
+                }
+            };
+
+            micButton.addEventListener('click', () => {
+                if (isRecognizing) {
+                    recognition.stop();
+                    return;
+                }
+                
+                try {
+                    recognition.start();
+                    micButton.textContent = '🔴 Grabando...';
+                    micButton.style.backgroundColor = 'red';
+                } catch (e) {
+                    console.error('Error al iniciar reconocimiento de voz:', e);
+                    micButton.textContent = '🎤';
+                    micButton.style.backgroundColor = '#1E3C57';
+                }
+            });
+        } else {
+            micButton.style.display = 'none';
+        }
+
+        toggleButton.addEventListener('click', () => {
+            const isHidden = chatBox.style.display === 'none' || chatBox.style.display === '';
+            chatBox.style.display = isHidden ? 'flex' : 'none';
+            if (isHidden) {
+                saludoInicial();
+            }
+        });
+
+        inputField.addEventListener('keypress', e => {
+            if (e.key === 'Enter') {
+                const pregunta = inputField.value.trim();
+                if (pregunta) {
+                    mostrarMensaje(pregunta, 'user');
+                    inputField.value = '';
+                    responder(pregunta);
+                }
+            }
+        });
+
+        function mostrarMensaje(texto, tipo) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message', tipo);
+            msgDiv.textContent = texto;
+            chatArea.appendChild(msgDiv);
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
+
+        function hablar(texto) {
+            if (synth.speaking) {
+                synth.cancel();
+            }
+            const utter = new SpeechSynthesisUtterance(texto);
+            utter.lang = 'es-ES';
+            utter.onstart = () => {
+                avatar.classList.add('speaking');
+            };
+            utter.onend = () => {
+                avatar.classList.remove('speaking');
+            };
+            synth.speak(utter);
+        }
+
+        function saludoInicial() {
+            if (chatArea.children.length === 0) {
+                mostrarMensaje(`¡Hola! Soy CarolBot, tu asistente de ${CONFIG.companyName}. ¿En qué puedo ayudarte hoy?`, 'bot');
+                hablar('Hola! Soy CarolBot, tu asistente de Carol Painting Construction. En que puedo ayudarte hoy?');
+            }
+        }
+
+        function responder(pregunta) {
+            const p = pregunta.toLowerCase();
+            let respuesta = "Disculpa, no entendí bien esa pregunta. ¿Podrías preguntar sobre *servicios*, *precios* o *contacto*? O prueba escribiendo en español.";
+            let respuestaVoz = respuesta;
+
+            if (p.includes("hola") || p.includes("saludo")) {
+                respuesta = "¡Hola! Estoy lista para responder tus dudas sobre pintura, remodelación o cotizaciones. ¿Qué necesitas saber?";
+                respuestaVoz = "Hola! Estoy lista para responder tus dudas. Qué necesitas saber?";
+            } else if (p.includes("servicio") || p.includes("hacen") || p.includes("ofrecen")) {
+                respuesta = "Ofrecemos: 1. Pintura Residencial y Comercial. 2. Instalación y Reparación de Drywall. 3. Remodelación Ligera y reparaciones. ¿Cuál te interesa más?";
+                respuestaVoz = "Ofrecemos pintura, drywall y remodelación ligera. ¿Cuál te interesa más?";
+            } else if (p.includes("precio") || p.includes("cotiza") || p.includes("cuesta") || p.includes("presupuesto")) {
+                respuesta = `Para un presupuesto exacto, necesito evaluar tu proyecto. Por favor, contáctanos: Teléfono 📞 ${CONFIG.phoneDisplay} o escribe al WhatsApp. ¡La cotización es gratis!`;
+                respuestaVoz = `Para un presupuesto gratis y exacto, por favor llámanos al ${CONFIG.phoneDisplay} o escribe al WhatsApp.`;
+            } else if (p.includes("contacto") || p.includes("llama") || p.includes("whatsapp")) {
+                respuesta = `Puedes contactarnos directamente aquí: Teléfono 📞: ${CONFIG.phoneDisplay} | Email 📧: ${CONFIG.email}. ¡Estamos listos para empezar!`;
+                respuestaVoz = `Puedes contactarnos al ${CONFIG.phoneDisplay}. ¡Estamos listos para empezar!`;
+            } else if (p.includes("marca") || p.includes("pintura")) {
+                respuesta = "Trabajamos principalmente con Sherwin-Williams y Benjamin Moore para garantizar la máxima calidad y durabilidad en todos nuestros proyectos.";
+                respuestaVoz = "Trabajamos con las mejores marcas como Sherwin-Williams y Benjamin Moore.";
+            }
+
+            setTimeout(() => {
+                mostrarMensaje(respuesta, 'bot');
+                hablar(respuestaVoz);
+            }, 500);
+        }
+    </script>
+</body>
+</html>
