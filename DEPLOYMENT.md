@@ -41,10 +41,12 @@ carolpainting-web/
 ├── img/                    # Directorio de imágenes
 ├── staticwebapp.config.json # Configuración de Azure
 ├── README.md               # Documentación principal
+├── DEPLOYMENT.md           # Esta guía de despliegue
 └── .github/
     └── workflows/          # GitHub Actions para CI/CD
         ├── azure-static-web-apps-ambitious-mud-094c3fd1e.yml
-        └── azure-static-web-apps-jolly-smoke-02f167e1e.yml
+        ├── azure-static-web-apps-jolly-smoke-02f167e1e.yml
+        └── azure-webapps-node.yml  # Workflow alternativo (no usado actualmente)
 ```
 
 ## ✅ Características Implementadas
@@ -107,5 +109,5 @@ Para actualizar el sitio:
 
 ---
 
-**Última actualización**: Octubre 2025
+**Última actualización**: Enero 2025
 **Estado**: ✅ Producción - Completamente Funcional
