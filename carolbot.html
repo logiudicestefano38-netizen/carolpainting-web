@@ -370,6 +370,14 @@
     </div>
 
     <script>
+        // Configuration constants
+        const CONFIG = {
+            phone: '+1 786-334-8969',
+            phoneDisplay: '(786) 334-8969',
+            email: 'henryhernan1992@gmail.com',
+            companyName: 'Carol 🫶🏼 Painting Construction'
+        };
+
         const toggleButton = document.getElementById('carolbot-toggle');
         const chatBox = document.getElementById('carolbot-box');
         const chatArea = document.getElementById('carolbot-chat');
@@ -379,21 +387,31 @@
         const synth = window.speechSynthesis;
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         const recognition = SpeechRecognition ? new SpeechRecognition() : null;
+        let isRecognizing = false;
 
         if (recognition) {
             recognition.lang = 'es-ES';
             recognition.interimResults = false;
             recognition.maxAlternatives = 1;
 
-            recognition.onresult = event => {
+            recognition.onstart = () => {
+                isRecognizing = true;
+            };
+
+            recognition.onend = () => {
+                isRecognizing = false;
                 micButton.textContent = '🎤';
                 micButton.style.backgroundColor = '#1E3C57';
+            };
+
+            recognition.onresult = event => {
                 const speechToText = event.results[0][0].transcript;
                 mostrarMensaje(speechToText, 'user');
                 responder(speechToText);
             };
 
             recognition.onerror = event => {
+                isRecognizing = false;
                 micButton.textContent = '🎤';
                 micButton.style.backgroundColor = '#1E3C57';
                 console.error('Error de reconocimiento de voz:', event.error);
@@ -403,12 +421,19 @@
             };
 
             micButton.addEventListener('click', () => {
+                if (isRecognizing) {
+                    recognition.stop();
+                    return;
+                }
+                
                 try {
                     recognition.start();
                     micButton.textContent = '🔴 Grabando...';
                     micButton.style.backgroundColor = 'red';
                 } catch (e) {
-                    console.error('El reconocimiento de voz ya está activo o no está soportado.', e);
+                    console.error('Error al iniciar reconocimiento de voz:', e);
+                    micButton.textContent = '🎤';
+                    micButton.style.backgroundColor = '#1E3C57';
                 }
             });
         } else {
@@ -459,7 +484,7 @@
 
         function saludoInicial() {
             if (chatArea.children.length === 0) {
-                mostrarMensaje('¡Hola! Soy CarolBot, tu asistente de Carol 🫶🏼 Painting Construction. ¿En qué puedo ayudarte hoy?', 'bot');
+                mostrarMensaje(`¡Hola! Soy CarolBot, tu asistente de ${CONFIG.companyName}. ¿En qué puedo ayudarte hoy?`, 'bot');
                 hablar('Hola! Soy CarolBot, tu asistente de Carol Painting Construction. En qué puedo ayudarte hoy?');
             }
         }
@@ -476,11 +501,11 @@
                 respuesta = "Ofrecemos: 1. Pintura Residencial y Comercial. 2. Instalación y Reparación de Drywall. 3. Remodelación Ligera y reparaciones. ¿Cuál te interesa más?";
                 respuestaVoz = "Ofrecemos pintura, drywall y remodelación ligera. ¿Cuál te interesa más?";
             } else if (p.includes("precio") || p.includes("cotiza") || p.includes("cuesta") || p.includes("presupuesto")) {
-                respuesta = "Para un presupuesto exacto, necesito evaluar tu proyecto. Por favor, contáctanos: Teléfono 📞 (305) 555-5555 o escribe al WhatsApp. ¡La cotización es gratis!";
-                respuestaVoz = "Para un presupuesto gratis y exacto, por favor llámanos o escribe al WhatsApp.";
+                respuesta = `Para un presupuesto exacto, necesito evaluar tu proyecto. Por favor, contáctanos: Teléfono 📞 ${CONFIG.phoneDisplay} o escribe al WhatsApp. ¡La cotización es gratis!`;
+                respuestaVoz = `Para un presupuesto gratis y exacto, por favor llámanos al ${CONFIG.phoneDisplay} o escribe al WhatsApp.`;
             } else if (p.includes("contacto") || p.includes("llama") || p.includes("whatsapp")) {
-                respuesta = "Puedes contactarnos directamente aquí: Teléfono 📞: (305) 555-5555 | Email 📧: info@carolpainting.com. ¡Estamos listos para empezar!";
-                respuestaVoz = "Puedes contactarnos al 305-555-5555. ¡Estamos listos para empezar!";
+                respuesta = `Puedes contactarnos directamente aquí: Teléfono 📞: ${CONFIG.phoneDisplay} | Email 📧: ${CONFIG.email}. ¡Estamos listos para empezar!`;
+                respuestaVoz = `Puedes contactarnos al ${CONFIG.phoneDisplay}. ¡Estamos listos para empezar!`;
             } else if (p.includes("marca") || p.includes("pintura")) {
                 respuesta = "Trabajamos principalmente con Sherwin-Williams y Benjamin Moore para garantizar la máxima calidad y durabilidad en todos nuestros proyectos.";
                 respuestaVoz = "Trabajamos con las mejores marcas como Sherwin-Williams y Benjamin Moore.";
