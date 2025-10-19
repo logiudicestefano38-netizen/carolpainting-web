@@ -1,8 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Carol Painting - Servicios profesionales de pintura interior y exterior, decoración, reparación y construcción en Homestead, FL">
+    <meta name="keywords" content="pintura, construcción, remodelación, pintura interior, pintura exterior, Homestead, Florida">
+    <title>Servicios | Carol Painting</title>
+    
     <!-- Tipografía moderna Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Animate.css y AOS.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="style.css">
+    
     <style>
         body { font-family: 'Montserrat', Arial, sans-serif; background: #fff; color: #222; }
         h1, h2, h3 { color: #0d1a2f; text-shadow: 2px 2px 8px #2196f3; }
@@ -12,21 +29,35 @@
         .efecto-animado { transition: transform 0.5s, box-shadow 0.5s; }
         .efecto-animado:hover { transform: scale(1.05) rotate(-2deg); box-shadow: 0 8px 32px #2196f3; }
     </style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios | Carol Painting</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
 </head>
 <body>
-    <!-- Menú de navegación -->
-    <nav class="navbar animate__animated animate__fadeInDown" data-aos="fade-down">
-        <a href="index.html">Inicio</a>
-        <a href="servicios.html">Servicios</a>
-        <a href="galeria.html">Galería</a>
-        <a href="contacto.html">Contacto</a>
-        <a href="sobre.html">Sobre Nosotros</a>
+    <!-- Navegación principal con Bootstrap 5 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">Carol Painting</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="servicios.html">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="galeria.html">Galería</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre.html">Sobre Nosotros</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
     <section class="servicios">
         <h2 class="animate__animated animate__fadeInUp" data-aos="fade-up">Servicios</h2>
@@ -42,6 +73,10 @@
         &copy; 2025 Carol Painting
     </footer>
     
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS.js -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>AOS.init();</script>
     
