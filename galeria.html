@@ -1,23 +1,3 @@
-        <!-- Código de ejemplo de Tawk.to Live Chat -->
-        <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        Tawk_API.onLoad = function(){
-            Tawk_API.addEvent('welcome', {
-                message: 'Hola y bienvenido, estamos listas para ayudarte con tu proyecto. Para comenzar, por favor selecciona el servicio principal que te interesa: Pintura, Remodelación, Construcción.'
-            });
-            Tawk_API.addEvent('faq-remodelacion', {
-                message: '¡Excelente elección! Nos especializamos en todo tipo de remodelaciones. Somos expertas en reparaciones y renovaciones de baños, cocinas, balcones y techos. Además, ofrecemos nuestros servicios para condominios, apartamentos, casas y escuelas. Para darte la mejor asistencia, por favor cuéntanos más sobre tu proyecto de remodelación. Si prefieres hablar directamente con un especialista, puedes llamarnos al +1 786-334-8969 o escribirnos a henryhernan1992@gmail.com.'
-            });
-        };
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/TU_ID_DE_WIDGET/1hxxxxxxx';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
-        </script>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -121,11 +101,10 @@
             <button class="galeria-arrow right" onclick="moverGaleria(1)">&#8594;</button>
         </div>
     </section>
-    <footer>
-        &copy; 2025 Carol Painting
     <footer class="animate__animated animate__fadeInUp" data-aos="fade-up" data-aos-delay="600">
         &copy; 2025 Carol Painting
     </footer>
+    
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>AOS.init();
     // Slider de galería con flechas y difuminado
@@ -161,3 +140,26 @@
     // Inicializar estado
     moverGaleria(0);
     </script>
+    
+    <!-- Código de ejemplo de Tawk.to Live Chat -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    Tawk_API.onLoad = function(){
+        Tawk_API.addEvent('welcome', {
+            message: 'Hola y bienvenido, estamos listas para ayudarte con tu proyecto. Para comenzar, por favor selecciona el servicio principal que te interesa: Pintura, Remodelación, Construcción.'
+        });
+        Tawk_API.addEvent('faq-remodelacion', {
+            message: '¡Excelente elección! Nos especializamos en todo tipo de remodelaciones. Somos expertas en reparaciones y renovaciones de baños, cocinas, balcones y techos. Además, ofrecemos nuestros servicios para condominios, apartamentos, casas y escuelas. Para darte la mejor asistencia, por favor cuéntanos más sobre tu proyecto de remodelación. Si prefieres hablar directamente con un especialista, puedes llamarnos al +1 786-334-8969 o escribirnos a henryhernan1992@gmail.com.'
+        });
+    };
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/TU_ID_DE_WIDGET/1hxxxxxxx';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+</body>
+</html>
